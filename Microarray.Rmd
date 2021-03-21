@@ -1,0 +1,60 @@
+---
+title: "Microarray"
+author: "Alejandra Escós"
+date: "3/10/2021"
+output: html_document
+---
+
+Las preguntas que discutiremos son las siguientes:
+
+1. Buscad un ejemplo de un estudio que haya utilizado microarrays de expresión para resolver una pregunta biológica. Debéis rellenar este formulario con la información que describe el estudio. Además, copiad vuestra respuesta con un mensaje al foro en la carpeta correspondiente para que los demás alumn@s del aula vean vuestra respuesta.
+La información básica que aportar es la siguiente:
+
+- Título del estudio: 
+Differential gene expression in WT versus Hem1 KO macrophages
+
+- Tipo de microarrays que utilizan:
+Affymetrix, tipo: Clariom_S_Mouse
+
+- Número de muestras y grupos que contiene el estudio - Que pregunta principal persigue responder
+Emplea 4 muestras, que serían las siguientes:
+GSM4508477	Hem1_WT_Mac_1
+GSM4508478	Hem1_WT_Mac_2
+GSM4508479	Hem1_KO_Mac_1
+GSM4508480	Hem1_KO_Mac_2
+
+El estudio es un sencillo analisis de como afecta la ausencia del gen Hem1 durante la diferenciación de macrófagos procedentes de médula ósea.
+
+- Enlace a los datos y/o al artículo - Comentarios adicionales:
+No parece que este trabajo haya sido publicado o si lo ha sido, no ha sido actualizadon en el servidor. Por lo demás se subio, Public on Dec 31, 2020 a GEO.
+
+2. En análisis de datos ómicos es muy importante la correcta utilización de los recursos informáticos (sobre todo en un máster de bioinformática). En este ejercicio empezaremos a familiarizarnos con Bioconductor y más adelante lo haremos con github.
+• Empezad revisando vuestra instalación básica. Comprobad que tenéis las últimas versiones de R, Rstudio y Rmarkdown.
+ 1 de 2
+Análisis de datos ómicos Máster en Bioestadística y Bioinformática
+• A continuación, pasaremos a instalar y usar Bioconductor
+◦ Acceded a la web de Bioconductor. Buscad como hacer una instalación básica e instaladlo en vuestro equipo. Para familiarizaros con Bioconductor podéis hacerlo paseando por su web (http://bioconductor.org) o bien leyendo antes algún tutorial como el que se encuentra en el aula.
+▪ Tras leer el tutorial realizad los ejercicios 1 y 2 descritos en las últimas diapositivas. Comentad vuestros resultados o problemas en el foro.
+
+Exercise 1: ExpressionSet vignette
+ Get the ExpressionSet vignette
+ Create of an ExpressionSet from scratch
+ Practice access and modification of slot contents, expecially using exprs() and pData()
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("GEOquery")
+
+```{r readData, print=FALSE, echo=TRUE}
+rm(list = ls())
+library(GEOquery)
+
+setwd("/Users/Alejandra/tmp/biotech") # Put  here your working directory
+gse149660 <- getGEO("GSE149660",GSEMatrix = TRUE)
+show(gse149660)
+```
+
+3. Leed la sección dedicada al diseño de experimentos de microarrays, así como la presentación que encontrareis en el aula. Observad especialmente los “tipos de diseño experimental”. de la presentación y omitid el último punto “Diseños experimentales para microarrays” de los materiales.
+◦ Volved a vuestra respuesta al ejercicio 1 e intentar determinar qué diseño experimental se ha utilizado en el estudio que habéis seleccionado.
+◦ Supongamos que desearais determinar el tamaño muestral adecuado para un cierto estudio con microarrays. ¿Qué estrategia creéis que sería la adecuada?
